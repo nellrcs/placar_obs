@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="jquery-2.2.4.min.js"></script>
+    <title>Painel</title>
+    <script src="/jquery-2.2.4.min.js"></script>
     <style>
         body{ 
             margin: 0 auto; border: none; background: #333;
@@ -75,7 +75,6 @@
                 padding: 20px;
                 color: #006e1d;
             }
-
 
     </style>
 </head>
@@ -162,16 +161,13 @@ $( document ).ready(function() {
         }
 
         function num(val){
-              if(val < 10 || String(val).length < 2 ){
-                return  "0" + String(val);
-              }
-              return val;
+          if(val < 10 || String(val).length < 2 ){
+            return  "0" + String(val);
           }
-
-
+          return val;
+        }
 
         function enviar(){
-
             var dataX = {
                 "categoria": $('#categoria').val(),
                 "cidadeAKA": $('#cidadeAKA').val(),
@@ -187,7 +183,7 @@ $( document ).ready(function() {
                 url: "/",
                 data: dataX,
                 dataType: "json"
-                });
+            });
         }
 
         $('#botao').click(function(){

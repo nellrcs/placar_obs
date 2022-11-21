@@ -19,12 +19,16 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
 
-app.get('/PLACAR.png', (req, res) => {
-    res.sendFile(__dirname + '/PLACAR.png');
+app.get('/main.css', (req, res) => {
+    res.sendFile(__dirname + '/css/main.css');
+});
+
+app.get('/background.png', (req, res) => {
+    res.sendFile(__dirname + '/img/background.png');
 });
 
 app.get('/jquery-2.2.4.min.js', (req, res) => {
-    res.sendFile(__dirname + '/jquery-2.2.4.min.js');
+    res.sendFile(__dirname + '/js/jquery-2.2.4.min.js');
 });
 
 app.get('/painel', (req, res) => {
