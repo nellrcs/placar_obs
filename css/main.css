@@ -1,0 +1,62 @@
+body{
+    margin: 0 auto;            
+}
+.placar{
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url('PLACAR.png');
+    background-repeat: no-repeat;
+    position: relative;
+    width: 606px;
+    height: 165px;
+    text-transform: uppercase;
+}
+.categoria{
+    position: absolute;
+    top: 41px;
+    left: 190px;
+    width: 272px;
+    text-align: center;
+    font-size: 20px;
+    font-style: italic;
+}
+.cidade{
+    position: absolute;
+    top: 74px;
+    width: 67px;
+    text-align: center;
+    font-size: 20px;
+    font-style: italic;
+}
+.cidade.aka{
+    left: 128px;
+}
+.cidade.ao{
+    left: 400px;
+}
+
+.time{
+    position: absolute;
+    top: 74px;
+    left: 265px;
+    width: 67px;
+    text-align: center;
+    font-size: 20px;
+    font-style: italic;
+    color: #fff;
+}
+
+.p-aka,.p-ao{
+    position: absolute;
+    top: 74px;
+    width: 67px;
+    text-align: center;
+    font-size: 20px;
+    font-style: italic;
+    color: #fff;
+}
+.p-aka{
+    left: 190px;
+}
+.p-ao{
+    left: 340px;
+}

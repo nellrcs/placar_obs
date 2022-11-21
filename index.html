@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Placar Html</title>
+    <script src="/jquery-2.2.4.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+    <div class="placar">
+        <div class="categoria" id="categoria"> </div>
+        <div class="cidade aka" id="cidadeAka">A</div>   
+        <div class="cidade ao" id="cidadeAo">B</div>
+        <div class="p-aka" id="ponoAka">00</div>
+        <div class="p-ao" id="pontoAo" >00</div>
+        <div class="time">
+            <span id="min">00</span>:<span id="sec">00</span>
+        </div>
+    </div>
+    
+    <script>
+        var categoria = $('#categoria');
+        var cidadeAka = $('#cidadeAka');
+        var cidadeAo = $('#cidadeAo');
+        var ponoAka = $('#ponoAka');
+        var pontoAo = $('#pontoAo');
+        var tempo = $('#tempo');
+        var min = $('#min');
+        var sec = $('#sec');
+        var socket = io();
+        socket.on('dataPlacar', function(msg) {
+            console.log(msg);
+            categoria.text(msg.categoria);
+            cidadeAka.text(msg.cidadeAKA);
+            cidadeAo.text(msg.cidadeAO);
+            ponoAka.text(msg.pontoAKA);
+            pontoAo.text(msg.pontoAO);
+            min.text(msg.min);
+            sec.text(msg.sec);
+        });
+    </script>
+</body>
+</html>

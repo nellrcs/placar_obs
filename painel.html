@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-2.2.4.min.js"></script>
+    <style>
+        body{ 
+            margin: 0 auto; border: none; background: #333;
+            color: #fff;
+            font-family: Arial, Helvetica, sans-serif;
+            }
+            .top{
+                width: 100%; 
+                margin: 0 auto;
+                text-align: center;
+            }
+            .top p{ font-size: 2em;}
+            .top input{
+                width: 400px;
+                height: 50px;
+                margin-bottom: 20px;
+            }
+            .center{
+                margin: 0 auto;
+                width: 100%;
+                position: relative;
+                
+            }
+            .center .cleft,.center .cright{
+                margin: 0 auto;
+                float: left;
+                width: 50%;
+                border: none;
+                padding: none;
+                text-align: center;
+                padding-bottom: 40px;
+            }
+
+            input{
+                background-color: none;
+                border: none;
+                border-bottom: 3px solid springgreen;
+                text-align: center;
+                outline: none;
+                height: 40px;
+                padding: 0;
+                font-size: 2em;
+            }
+            .center .cleft{
+                background-color: red;;
+            }
+            .center .cright{
+                background-color: blue;;
+            }
+
+            input:disabled {
+                cursor: default;
+                background-color: #cbcbcb;
+                color: red;
+            }
+            .tempo{
+                margin-top: 250px;
+                text-align: center;
+            }
+            
+            .btbaixo{
+                text-align: center;
+            }
+            .btbaixo button{
+                margin: 0 auto;
+                font-size: 3em;
+                padding: 20px;
+                color: #006e1d;
+            }
+
+
+    </style>
+</head>
+<body>
+    <span>Desenvolvido por: @warllencs</span>
+    <div class="top">
+        <p>Categoria:</p>
+        <input type="text" id="categoria" maxlength="19" value="" placeholder="Nome Cat.">
+    </div>
+    <div class="center">
+        <div class="cleft">
+            <p>Cidade:</p>
+            <input type="text" id="cidadeAKA" maxlength="4"  value="BRA" placeholder="Local">
+            <p>Pontos:</p>
+            <input type="number" id="pontoAKA" maxlength="2" value="00" placeholder="Local">
+        </div>
+        <div class="cright">
+            <p>Cidade:</p>
+            <input type="text" id="cidadeAO" maxlength="4" value="BRA">
+            <p>Pontos:</p>
+            <input type="number" id="pontoAO"  maxlength="2" value="00">
+            
+        </div>
+    </div>
+
+<div class="tempo">
+    <p>Tempo:</p>
+    <input type="number" id="min" maxlength="2" min="0" max="30" placeholder="Min">:
+    <input type="number" id="sec" maxlength="2" min="0" max="59" placeholder="Seg">
+</div>
+    <br>
+    <div class="btbaixo">
+    <button type="button" id="botao">INICIAR</button>
+    </div>
+    <script>
+$( document ).ready(function() {
+        var segundos = 0;
+        var tempoTotal = 0;
+        var status = false;
+        var tempos;
+        function segundo(){
+            segundos++;
+            var timeAtual = tempoTotal - segundos;
+            console.log(tempoTotal);
+            if(timeAtual >= 0){
+                document.getElementById('sec').value = num(timeAtual%60);
+                document.getElementById('min').value = num(parseInt(timeAtual/60));
+                document.getElementById('min').disabled = true;
+                document.getElementById('sec').disabled = true;
+                enviar();
+            }else{
+                stop();
+            }
+            
+            console.log(segundos);
+        };
+
+        function start(){
+            if(!status){
+                segundos = 0;
+                $('#botao').text("PARAR");
+                //$('body').css('background-color', 'yellow');
+                $('#min').css('background-color', 'yellow');
+                $('#sec').css('background-color', 'yellow');
+                var min = document.getElementById('min').value;
+                var sec = document.getElementById('sec').value;     
+                tempoTotal = (60 * parseInt(min) ) + parseInt(sec);
+                status = true;
+                tempos = setInterval(function(){ segundo() },1000);
+            }else{
+                status = false;
+                stop();
+            }
+        }
+
+        function stop(){
+            $('#botao').text("INICIAR");
+            //$('body').css('background-color', '#333');
+            $('#min').css('background-color', '#fff');
+            $('#sec').css('background-color', '#fff');
+            document.getElementById('min').disabled = false;
+            document.getElementById('sec').disabled = false;
+            clearInterval(tempos);
+        }
+
+        function num(val){
+              if(val < 10 || String(val).length < 2 ){
+                return  "0" + String(val);
+              }
+              return val;
+          }
+
+
+
+        function enviar(){
+
+            var dataX = {
+                "categoria": $('#categoria').val(),
+                "cidadeAKA": $('#cidadeAKA').val(),
+                "cidadeAO": $('#cidadeAO').val(),
+                "pontoAKA": $('#pontoAKA').val(),
+                "pontoAO": $('#pontoAO').val(),
+                "min": $('#min').val(),
+                "sec": $('#sec').val()
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "/",
+                data: dataX,
+                dataType: "json"
+                });
+        }
+
+        $('#botao').click(function(){
+            start()
+        });
+    });
+    </script>
+</body>
+</html>
