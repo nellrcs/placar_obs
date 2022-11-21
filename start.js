@@ -35,5 +35,10 @@ app.get('/painel', (req, res) => {
     res.sendFile(__dirname + '/painel.html');
 });
 
-server.listen(9873);
+const porta = 9873;
+console.log('Server on!');
+console.log(`Main page http://127.0.0.1:${porta}/`);
+console.log(`Painel page http://127.0.0.1:${porta}/painel`);
+server.listen(porta);
+
 

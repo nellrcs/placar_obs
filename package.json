@@ -1,8 +1,8 @@
 {
-  "name": "soket",
+  "name": "placar_obs",
   "version": "1.0.0",
-  "description": "app socket",
-  "main": "index.js",
+  "description": "Placar html para lives",
+  "main": "start.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
