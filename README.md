@@ -11,7 +11,7 @@
 ![img2](https://user-images.githubusercontent.com/5922620/203147558-3dff74f8-a993-4937-bb30-de97bfdf8d14.jpg)
 
 ```bash
-# Instalar a dependencias e executar o app 
+# Instalar as dependencias e executar o app 
 npm install && node start.js
 ```
 
