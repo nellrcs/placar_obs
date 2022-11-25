@@ -2,9 +2,9 @@
 
 **Simples placar usando soket.io e jquery.**
 
-- Aplicaco simples
+- simples
 - Compativel com navegadores antigos
-- Pode ser usado no OBS studio
+- Pode ser usado no OBS
 - Atualizacao em tempo real
 
 ![img1](https://user-images.githubusercontent.com/5922620/203147543-0d6a9ecc-c389-4bea-b2d4-d1b65b927b52.jpg)
